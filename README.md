@@ -1,3 +1,5 @@
+> **Safari 定制分支**：本分支保存 Chrome 商店 BewlyCat 1.8.0 → Safari 1.8.0.6 的已验证补丁、测试及转换 Skill。使用方法见 [safari-port](safari-port/README.md)。补丁针对商店构建，未重写上游 `src/`；原有 `pnpm build-safari` 不会自动应用这些补丁。
+
 # BewlyCat
 
 ![GitHub Release](https://img.shields.io/github/v/release/keleus/BewlyCat?label=Github) ![Chrome Web Store Version](https://img.shields.io/chrome-web-store/v/oopkfefbgecikmfbbapnlpjidoomhjpl?label=Chrome) ![Edge Addons Version](https://img.shields.io/badge/dynamic/json?color=blue&label=Edge&query=%24.version&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Faaammfjdfifgnfnbflolojihjfhdploj&prefix=v) ![Firefox Version](https://img.shields.io/amo/v/bewlycat?label=Firefox)

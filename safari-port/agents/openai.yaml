@@ -1,0 +1,4 @@
+interface:
+  display_name: "BewlyCat Safari 转换与升级"
+  short_description: "转换新版 BewlyCat，复用登录及暗色评论修复并验证 Safari"
+  default_prompt: "请用 $bewlycat-safari 将最新版 BewlyCat 转换并升级为 Safari 扩展，保留现有设置，迁移仍必要的兼容修复并实际验证。"
