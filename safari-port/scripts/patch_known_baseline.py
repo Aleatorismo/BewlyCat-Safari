@@ -72,6 +72,7 @@ def patch(source, output, version, hide_widescreen_sender=False):
   display: none !important;
 }
 '''
+    texts['dist/contentScripts/style.css'] += '\n' + (ASSETS / 'safari-comment-layout.css').read_text()
     manifest['version'] = version
     if manifest['content_scripts'][0].get('world', 'ISOLATED') != 'ISOLATED':
         raise ValueError('Unexpected content-script world')

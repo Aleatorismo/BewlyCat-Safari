@@ -1,4 +1,4 @@
-# BewlyCat Safari 1.8.0.6
+# BewlyCat Safari 1.8.0.7
 
 这里保存已经在 Safari 中验证的 Chrome 商店 1.8.0 适配和宽屏定制。它是原仓库的可复现补丁层，不是重新编译 `src/` 得到的新版本；原有 `pnpm build-safari` 不会应用这里的补丁。
 
@@ -11,7 +11,8 @@
 | 评论继承页面主题，避免暗色文字看不清 | 补丁脚本仅修改外部 CSS 的默认 `:host,:root` 规则 |
 | 普通页面及宽屏抽屉评论各自保持统一背景 | `var(--bewly-widescreen-sidebar-bg, var(--bew-bg))` |
 | 隐藏宽屏弹幕发送栏、回收高度；保留悬停覆盖和固定时视频缩小 | `--hide-widescreen-sender` 选项；复用上游 ResizeObserver 和抽屉逻辑 |
-| 防止反复提示刷新 | manifest 与前端版本同时更新为 `1.8.0.6` |
+| 子评论姓名正文分行，日期及操作栏保持横排 | `assets/safari-comment-layout.css`，仅作用于宽屏容器 |
+| 防止反复提示刷新 | manifest 与前端版本同时更新为 `1.8.0.7` |
 | Safari 宿主/扩展标识大小写一致、构建号递增 | 下方 Xcode 转换与构建步骤 |
 
 4 个原始资源文件改变，新增 1 个内容脚本；原来的 MAIN-world 注入脚本等其余资源保持一致。详细原理及迁移边界见 [兼容说明](references/compatibility.md) 和 [宽屏回归说明](references/widescreen.md)。
@@ -25,7 +26,7 @@ python3 safari-port/scripts/extract_crx.py /path/to/BewlyCat.crx safari-port/wor
 python3 safari-port/scripts/patch_known_baseline.py \
   --source safari-port/work/original \
   --output safari-port/work/patched \
-  --version 1.8.0.6 --hide-widescreen-sender
+  --version 1.8.0.7 --hide-widescreen-sender
 node safari-port/scripts/test_adapter.cjs safari-port/work/patched
 ```
 
@@ -56,11 +57,11 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer xcodebuild \
   -project safari-port/work/projects/BewlyCat/BewlyCat.xcodeproj \
   -scheme BewlyCat -configuration Release \
   -derivedDataPath safari-port/work/build \
-  CODE_SIGN_IDENTITY=- CODE_SIGN_STYLE=Manual CURRENT_PROJECT_VERSION=8 build
+  CODE_SIGN_IDENTITY=- CODE_SIGN_STYLE=Manual CURRENT_PROJECT_VERSION=9 build
 codesign --verify --deep --strict safari-port/work/build/Build/Products/Release/BewlyCat.app
 ```
 
-`8` 是此次验证版的构建号，以后升级应递增。宿主与扩展容器营销版本为 `1.0`，Web Extension 的版本为 `1.8.0.6`，两者独立。这是本机 ad-hoc 构建，不是公证发行版。
+`9` 是此次验证版的构建号，以后升级应递增。宿主与扩展容器营销版本为 `1.0`，Web Extension 的版本为 `1.8.0.7`，两者独立。这是本机 ad-hoc 构建，不是公证发行版。
 
 新构建验证成功后备份旧应用，再复制到原有稳定安装位置。不要在复制之前删除原应用；不要重置扩展数据。Safari 中启用扩展并授权 B 站；本机未签名构建还需要允许未签名扩展。遵循实际权限提示，由用户完成系统认证。转换警告、构建成功和签名验证均不能替代功能回归。
 

@@ -26,3 +26,6 @@ extension-safari-macos/
 .playwright-mcp/
 # 本地计划
 UI-FIX-PLAN.md
+
+# Personal BewlyCat settings exports
+bewly-settings*.json

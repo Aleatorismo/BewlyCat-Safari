@@ -1,4 +1,4 @@
-> **Safari 定制分支**：本分支保存 Chrome 商店 BewlyCat 1.8.0 → Safari 1.8.0.6 的已验证补丁、测试及转换 Skill。使用方法见 [safari-port](safari-port/README.md)。补丁针对商店构建，未重写上游 `src/`；原有 `pnpm build-safari` 不会自动应用这些补丁。
+> **Safari 定制分支**：本分支保存 Chrome 商店 BewlyCat 1.8.0 → Safari 1.8.0.7 的已验证补丁、测试及转换 Skill。使用方法见 [safari-port](safari-port/README.md)。补丁针对商店构建，未重写上游 `src/`；原有 `pnpm build-safari` 不会自动应用这些补丁。
 
 # BewlyCat
 

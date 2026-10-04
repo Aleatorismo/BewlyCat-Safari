@@ -1,0 +1,48 @@
+/* Safari does not support :host-context(). The named container also scopes
+   these rules through nested comment shadow roots, without changing normal pages. */
+@container bewly-widescreen-sidebar (min-width: 0px) {
+  :host(bili-comment-reply-renderer) #main > bili-comment-user-info {
+    display: block !important;
+    margin-bottom: var(--bew-space-1, 4px) !important;
+  }
+
+  :host(bili-comment-reply-renderer) #footer {
+    padding-right: 0 !important;
+  }
+
+  :host(bili-comment-action-buttons-renderer) {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    column-gap: var(--bew-space-2, 8px) !important;
+    font-size: var(--bew-font-size-caption, 12px) !important;
+    min-width: 0 !important;
+  }
+
+  :host(bili-comment-action-buttons-renderer) :is(#pubdate, #like, #dislike, #reply, #more) {
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Keep unusually deep/narrow replies on one row; full date stays in the
+     original element and only truncates visually if space is exhausted. */
+  :host(bili-comment-action-buttons-renderer) #pubdate {
+    flex-shrink: 1 !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  :host(bili-comment-action-buttons-renderer) #more {
+    margin-left: auto !important;
+  }
+}
+
+@container bewly-widescreen-sidebar (max-width: 400px) {
+  :host(bili-comment-action-buttons-renderer) {
+    column-gap: var(--bew-space-1, 4px) !important;
+  }
+}
